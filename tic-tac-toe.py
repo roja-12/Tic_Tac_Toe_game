@@ -2,26 +2,23 @@ def display_board(lst):
     print(lst[7]+'|'+lst[8]+'|'+lst[9])
     print(lst[4]+'|'+lst[5]+'|'+lst[6])
     print(lst[1]+'|'+lst[2]+'|'+lst[3])
-test_board=['#',"O","X","O","X","O","X","O","X","O"]
+
 
 #taking input from palyer
 def player_input():
     marker=""
     while marker !="X" or marker!="O":
         marker = input("Player1: choose X or O: ").upper()
-    if marker=="X":
-        return ('X','O')
-    else:
-        return ('O', 'X')
+        if marker == "X":
+            return ('X','O')
+        else:
+            return ('O', 'X')
 
 
 def place_marker(board, marker, position):
 
     board[position]=marker
 
-
-place_marker(test_board, '$', 8)
-display_board(test_board)
 
 def win_check(board, mark):
     return ((board[1]== mark and board[2]== mark and board[3]==mark ) or
@@ -33,8 +30,7 @@ def win_check(board, mark):
     (board[9]== mark and board[5]== mark and board[1]==mark ))
     
 
-display_board(test_board)
-win_check(test_board, 'X')
+
 
 import random
 def choose_first():
@@ -45,11 +41,11 @@ def choose_first():
     else:
         return 'Player 2'
 
-def space_check(board, postion):
+def space_check(board, position):
      
     return board[position]==" "
 
-def full_check(board):
+def full_board_check(board):
     for i in range(1, 10):
         if space_check(board, i):
             return False
@@ -62,7 +58,7 @@ def player_choice(board):
     return position
 
 def replay():
-    input("play again? enter yes or no")
+    choice=input("play again? enter yes or no").lower()
     return choice == "yes"
 
 
@@ -87,6 +83,8 @@ while True:
       # game play
 
         while game_on:
+
+
           
 
       #player one turn
@@ -94,7 +92,7 @@ while True:
 
                 display_board(the_board)
                 position = player_choice(the_board)
-                place_marker(the_board, player1_marker,position)
+                place_marker(the_board, player1_marker, position)
 
                 #check if they won or not
 
